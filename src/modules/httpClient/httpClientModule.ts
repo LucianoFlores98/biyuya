@@ -1,19 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios from "axios";
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import axiosRetry from "axios-retry";
 import HttpStatusCode from "./httpStatusCodes";
-import { HttpParams, HttpResponse, IHttpClient } from "./interfaces";
+import type { HttpParams, HttpResponse, IHttpClient } from "./interfaces";
 import { DependencyManager } from "../../dependencyManager";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
-enum HttpMethod {
-  GET = "GET",
-  POST = "POST",
-  DELETE = "DELETE",
-  PUT = "PUT",
-  PATCH = "PATCH",
-}
+const HttpMethod = {
+  GET: "GET",
+  POST: "POST",
+  DELETE: "DELETE",
+  PUT: "PUT",
+  PATCH: "PATCH",
+} as const;
+
+type HttpMethod = typeof HttpMethod[keyof typeof HttpMethod];
 
 export const httpClientModuleInitialize = (
   dependencyManager: DependencyManager
