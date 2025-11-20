@@ -1,4 +1,4 @@
-import { Budget } from '../../../domain/entities/Budget';
+import type { Budget } from '../../domain/entities/Budget';
 
 interface SpendingChartProps {
   budgets: Budget[];
@@ -7,19 +7,23 @@ interface SpendingChartProps {
 export const SpendingChart = ({ budgets }: SpendingChartProps) => {
   const totalSpent = budgets.reduce((sum, budget) => sum + budget.spent, 0);
 
-  let currentAngle = 0;
-  const segments = budgets.map((budget) => {
+  const segments = budgets.reduce<
+    Array<Budget & { percentage: number; startAngle: number; angle: number }>
+  >((acc, budget, index) => {
     const percentage = (budget.spent / totalSpent) * 100;
     const angle = (percentage / 100) * 360;
-    const segment = {
+    const previous = acc[index - 1];
+    const startAngle = previous ? previous.startAngle + previous.angle : 0;
+
+    acc.push({
       ...budget,
       percentage,
-      startAngle: currentAngle,
+      startAngle,
       angle,
-    };
-    currentAngle += angle;
-    return segment;
-  });
+    });
+
+    return acc;
+  }, []);
 
   const createArc = (startAngle: number, angle: number, color: string) => {
     const start = startAngle - 90;

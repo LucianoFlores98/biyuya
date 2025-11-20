@@ -4,27 +4,27 @@ import { NavLink } from 'react-router-dom';
 const menuItems = [
   { icon: LayoutGrid, label: 'Dashboard', to: '/' },
   { icon: Box, label: 'Servicios', to: '/servicios' },
-  { icon: CreditCard, label: 'Gastos Tarjeta', to: '/gastos-tarjeta' },
+  { icon: CreditCard, label: 'Gastos', to: '/gastos' },
   { icon: DollarSign, label: 'Ingresos', to: '/ingresos' },
 ];
 
 export const Sidebar = () => {
   return (
-    <aside className="fixed left-0 top-0 w-[30%] h-screen bg-white border-r border-gray-200 flex flex-col z-10">
+    <aside className="w-64 bg-white border-r border-gray-200 min-h-screen flex flex-col">
       <div className="p-6">
         <div className="flex items-center gap-2 mb-8">
           <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
             <Target className="text-white" size={20} />
           </div>
-          <span className="text-xl font-bold text-gray-900">FinTrack</span>
+          <span className="text-xl font-bold text-gray-900">Biyuya</span>
         </div>
 
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 bg-gradient-to-br from-orange-300 to-orange-400 rounded-full"></div>
             <div>
-              <div className="font-semibold text-gray-900">Hello, Alex!</div>
-              <div className="text-sm text-emerald-600">Welcome back</div>
+              <div className="font-semibold text-gray-900">Hola Luciano!</div>
+              <div className="text-sm text-emerald-600">Otra vez!</div>
             </div>
           </div>
         </div>

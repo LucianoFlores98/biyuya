@@ -1,4 +1,4 @@
-import { Transaction } from '../../../domain/entities/Transaction';
+import type { Transaction } from '../../domain/entities/Transaction';
 
 interface TransactionsTableProps {
   transactions: Transaction[];
