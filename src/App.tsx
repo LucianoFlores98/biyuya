@@ -14,6 +14,7 @@ const App = () => {
     app.revenueModuleInitialize(dependencyManager);
     app.expenseModuleInitialize(dependencyManager);
     app.suscriptionModuleInitialize(dependencyManager);
+    app.dashboardModuleInitialize(dependencyManager);
     setIsLoaded(true);
   }, []);
 

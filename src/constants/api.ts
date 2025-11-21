@@ -4,6 +4,8 @@ export const apis = {
   },
   modules: {
     revenue: "/revenue",
-    expense: "/expense"
+    expense: "/expense",
+    suscription: "/suscription",
+    dashboard: "/dashboard"
   },
 };

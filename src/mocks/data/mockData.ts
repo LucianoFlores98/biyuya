@@ -1,6 +1,6 @@
-import type { Transaction } from '../../domain/entities/Transaction';
-import type { Budget } from '../../domain/entities/Budget';
-import type { FinancialStats } from '../../domain/entities/FinancialStats';
+import type { Transaction } from '../../modules/dashboard/core/entities/Transaction';
+import type { Budget } from '../../modules/dashboard/core/entities/Budget';
+import type { FinancialStats } from '../../modules/dashboard/core/entities/FinancialStats';
 
 export const mockTransactions: Transaction[] = [
   {

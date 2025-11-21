@@ -1,4 +1,4 @@
-import type { Budget } from '../../domain/entities/Budget';
+import type { Budget } from '../../core/entities/Budget';
 
 interface SpendingChartProps {
   budgets: Budget[];

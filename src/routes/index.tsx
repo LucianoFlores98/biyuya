@@ -1,10 +1,10 @@
 import { Route } from "react-router-dom";
 import Layout from "../components/Layout";
-import Dashboard from "../pages/Dashboard";
 import { EXPENSE, REVENUE, SUSCRIPTION } from "./constants";
 import RevenueScreen from "../modules/revenue/screens";
 import ExpenseScreen from "../modules/expenses/screens";
 import SuscriptionScreen from "../modules/suscriptions/screens";
+import DashboardScreen from "../modules/dashboard/screens";
 
 export const routerRoutes = (
   <>
@@ -12,7 +12,7 @@ export const routerRoutes = (
       path="/"
       element={
         <Layout>
-          <Dashboard />
+          <DashboardScreen />
         </Layout>
       }
     />

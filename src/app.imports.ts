@@ -8,6 +8,7 @@ export { httpClientModuleInitialize } from "./modules/httpClient/httpClientModul
 export { revenueModuleInitialize } from "./modules/revenue/revenueModuleInitialize";
 export { expenseModuleInitialize } from './modules/expenses/expenseModuleInitialize';
 export { suscriptionModuleInitialize } from './modules/suscriptions/suscriptionModuleInitialize';
+export { dashboardModuleInitialize } from './modules/dashboard/dashboardModuleInitialize';
 
 import Layout from "./components/Layout";
 
