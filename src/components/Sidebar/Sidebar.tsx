@@ -49,7 +49,7 @@ export const Sidebar = () => {
 
       <div className="mt-auto p-6">
         <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors">
-          Add Expense
+          Agregar Gasto
         </button>
       </div>
     </aside>

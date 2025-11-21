@@ -13,6 +13,7 @@ const App = () => {
     app.httpClientModuleInitialize(dependencyManager);
     app.revenueModuleInitialize(dependencyManager);
     app.expenseModuleInitialize(dependencyManager);
+    app.suscriptionModuleInitialize(dependencyManager);
     setIsLoaded(true);
   }, []);
 
