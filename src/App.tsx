@@ -11,6 +11,8 @@ const App = () => {
 
   useEffect(() => {
     app.httpClientModuleInitialize(dependencyManager);
+    app.revenueModuleInitialize(dependencyManager);
+    app.expenseModuleInitialize(dependencyManager);
     setIsLoaded(true);
   }, []);
 

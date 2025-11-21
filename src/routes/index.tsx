@@ -1,8 +1,9 @@
 import { Route } from "react-router-dom";
 import Layout from "../components/Layout";
 import Dashboard from "../pages/Dashboard";
-import { REVENUE } from "./constants";
+import { EXPENSE, REVENUE } from "./constants";
 import RevenueScreen from "../modules/revenue/screens";
+import ExpenseScreen from "../modules/expenses/screens";
 
 
 export const routerRoutes = (
@@ -20,6 +21,14 @@ export const routerRoutes = (
       element={
         <Layout>
           <RevenueScreen />
+        </Layout>
+      }
+    />
+    <Route
+      path={EXPENSE}
+      element={
+        <Layout>
+          <ExpenseScreen />
         </Layout>
       }
     />
