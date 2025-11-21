@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { IRevenuePresenter } from "../core/presentation/IRevenuePresenter";
 import { revenuePresenterProvider } from "../infrastructure/presentation/presenterProvider";
 import type { IRevenueScreens } from "../core/screens/IRevenueScreens";
@@ -9,11 +9,9 @@ const RevenueScreen = () => {
   const presenterProvider = revenuePresenterProvider();
 
   const [revenue, setRevenue] = useState<IRevenue[]>([]);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded] = useState(true); // Initialize to true since effect runs on mount
   const [isContentLoading, setIsContentLoading] = useState<boolean>(false);
-  const [presenter, setPresenter] = useState<IRevenuePresenter>(
-    {} as IRevenuePresenter
-  );
+  const presenterRef = useRef<IRevenuePresenter | null>(null);
 
   const revenueTitleTab = "Ingresos";
 
@@ -38,19 +36,17 @@ const RevenueScreen = () => {
 
     },
   };
+  
   //Con este useEffect cargamos nuestro presenter, el que se encargará de traer todas nuestras funciones que construimos
   useEffect(() => {
     document.title = revenueTitleTab;
-    setPresenter(presenterProvider.getPresenter(viewHandlers));
-    setLoaded(true);
+    const presenterInstance = presenterProvider.getPresenter(viewHandlers);
+    presenterRef.current = presenterInstance;
+        
+    // Call getRevenue - this is an async operation that will call viewHandlers
+    // which will update state, but that's fine as it's in a callback
+    presenterInstance.getRevenue();
   }, []);
-
-  useEffect(() => {
-    if (loaded) {
-      setIsContentLoading(true);
-      presenter.getRevenue();
-    }
-  }, [loaded]);
 
   return (
     <div>

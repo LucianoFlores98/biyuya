@@ -1,33 +1,27 @@
 import { DependencyManager } from "../../dependencyManager";
-import { IHttpClient } from "../httpClient/interfaces";
-import { DownloadFileByNameAction } from "./core/actions/DownloadFileByNameAction";
-import { GetRegistersAction } from "./core/actions/GetRegistersAction";
-import { ProcessFileAction } from "./core/actions/ProcessFileAction";
-import { DownloadErrorFileAction } from "./core/actions/DownloadErrorFileAction";
-import { CendeuGateway } from "./infrastructure/gateways/CendeuGateway";
+import type { IHttpClient } from "../httpClient/interfaces";
+import { DeleteRevenueAction } from "./core/actions/DeleteRevenueAction";
+import { EditRevenueAction } from "./core/actions/EditRevenueAction";
+import { GetRevenueAction } from "./core/actions/GetRevenueAction";
+import { SaveRevenueAction } from "./core/actions/SaveRevenueAction";
+import { RevenueGateway } from "./infrastructure/gateways/RevenueGateway";
 
-export const cendeuModuleInitialize = (
+export const revenueModuleInitialize = (
   dependencyManager: DependencyManager
 ) => {
-  const cendeuGateway = CendeuGateway(
+  const revenueGateway = RevenueGateway(
     GetHttpClientDependency(dependencyManager)
   );
-  const processFileAction = ProcessFileAction(cendeuGateway);
-  const getRegistersAction = GetRegistersAction(cendeuGateway);
-  const downloadFileByNameAction = DownloadFileByNameAction(cendeuGateway);
+  const getRevenueAction = GetRevenueAction(revenueGateway);
+  const editRevenueAction = EditRevenueAction(revenueGateway);
+  const saveRevenueAction = SaveRevenueAction(revenueGateway);
+  const deleteRevenueAction = DeleteRevenueAction(revenueGateway);
 
-  const downloadErrorFileAction = DownloadErrorFileAction(cendeuGateway);
+  dependencyManager.register("getRevenueAction", getRevenueAction);
+  dependencyManager.register("editRevenueAction", editRevenueAction);
+  dependencyManager.register("saveRevenueAction", saveRevenueAction);
+  dependencyManager.register("deleteRevenueAction", deleteRevenueAction);
 
-  dependencyManager.register("cendeuProcessFileAction", processFileAction);
-  dependencyManager.register("cendeuGetRegistersAction", getRegistersAction);
-  dependencyManager.register(
-    "cendeuDownloadFileByNameAction",
-    downloadFileByNameAction
-  );
-  dependencyManager.register(
-    "cendeuDownloadErrorFileAction",
-    downloadErrorFileAction
-  );
 };
 
 export const GetHttpClientDependency = (dependencyManager: DependencyManager) =>
